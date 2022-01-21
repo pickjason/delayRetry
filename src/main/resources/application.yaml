@@ -1,0 +1,12 @@
+delay-retry:
+  #tick的时长，也就是指针多久转一格
+  tickDuration: 1
+  #一圈有几个格子
+  ticksPerWheel: 10
+  #是否开启内存泄露检测
+  leakDetection: true
+  #任务的超时等待时间
+  maxPendingTimeouts: 1
+
+
+
