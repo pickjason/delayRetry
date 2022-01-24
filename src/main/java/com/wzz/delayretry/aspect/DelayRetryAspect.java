@@ -1,11 +1,15 @@
 package com.wzz.delayretry.aspect;
 
-import org.aspectj.lang.JoinPoint;
+import com.wzz.delayretry.DelayProcessingService;
+import com.wzz.delayretry.entity.DelayTask;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @program: delay-retry
@@ -17,23 +21,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class DelayRetryAspect {
 
+   @Autowired
+  private DelayProcessingService delayProcessingService;
+
    @Pointcut("@annotation(com.wzz.delayretry.annotations.DelayRetry)")
     public void DelayPoint(){
 
    }
 
-
-
-   @Before("DelayPoint()")
-    public void submitTask(JoinPoint joinPoint){
-       Object[] args = joinPoint.getArgs();
-
-       Class<? extends JoinPoint> aClass = joinPoint.getClass();
-
-       Object target = joinPoint.getTarget();
-
-       MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-
+   @Around("DelayPoint()")
+    public void submitTask(ProceedingJoinPoint joinPoint) throws Throwable {
+      delayProcessingService.execute(DelayTask.
+   createTaskNeedRetry(joinPoint,1L,TimeUnit.MINUTES,2,1L,TimeUnit.SECONDS));
    }
 
 }

@@ -7,11 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DelayRetryApplication {
     @Autowired
-   static DelayProcessingService delayProcessingService;
+   static TestController delayRetryAspect;
 
     public static void main(String[] args) {
         SpringApplication.run(DelayRetryApplication.class, args);
-
 
     }
 

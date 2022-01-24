@@ -9,4 +9,7 @@ delay-retry:
   maxPendingTimeouts: 1
 
 
+server:
+  port: 9781
+
 

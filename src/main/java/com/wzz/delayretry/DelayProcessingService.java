@@ -1,5 +1,8 @@
 package com.wzz.delayretry;
 
+import com.wzz.delayretry.entity.DelayTask;
+import org.springframework.stereotype.Component;
+
 import java.util.concurrent.Future;
 
 /**
@@ -8,6 +11,7 @@ import java.util.concurrent.Future;
  * @author: wangzz
  * @create: 2022-01-21 14:41
  */
+@Component
 public interface DelayProcessingService {
 
     /**
@@ -19,7 +23,11 @@ public interface DelayProcessingService {
     /**
      *
      */
-    void execute();
+    void execute(DelayTask delayTask);
+
+
+
+
 
 
 }
