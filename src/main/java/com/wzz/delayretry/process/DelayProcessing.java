@@ -57,4 +57,9 @@ public class DelayProcessing implements DelayProcessingService ,RetryService {
             execute(delayTask);
         }
     }
+
+    @Override
+    public void recover(DelayTask delayTask) {
+
+    }
 }

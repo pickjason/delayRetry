@@ -31,8 +31,7 @@ public class DelayRetryAspect {
 
    @Around("DelayPoint()")
     public void submitTask(ProceedingJoinPoint joinPoint) throws Throwable {
-      delayProcessingService.execute(DelayTask.
-   createTaskNeedRetry(joinPoint,1L,TimeUnit.MINUTES,2,1L,TimeUnit.SECONDS));
+      delayProcessingService.execute(DelayTask.createTaskNeedRetry(joinPoint,1L,TimeUnit.MINUTES,2,1L,TimeUnit.SECONDS));
    }
 
 }

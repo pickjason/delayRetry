@@ -14,4 +14,7 @@ public interface RetryService {
 
     void retryExecute(DelayTask delayTask);
 
+
+    void recover(DelayTask delayTask);
+
 }
